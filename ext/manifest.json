@@ -1,0 +1,21 @@
+{
+  "applications": {
+    "gecko": {
+      "id": "githubcondenser@summerti.me",
+      "strict_min_version": "60.0"
+    }
+  },
+  "manifest_version": 2,
+  "name": "Github Condenser",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.github.com/*"
+      ],
+      "css": [
+        "main.css"
+      ]
+    }
+  ]
+}

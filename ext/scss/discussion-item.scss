@@ -1,0 +1,18 @@
+
+.discussion-item {
+    margin: {
+        top: 5px;
+        bottom: 5px;
+    }
+    + .discussion-item {
+        padding-top: 6px;
+    }
+}
+.discussion-item-comment_deleted + .discussion-item-comment_deleted {
+    border: unset;
+    margin: {top: -10px;}
+    padding: {top: unset;}
+    .discussion-item-icon {
+        display: none;
+    }
+}

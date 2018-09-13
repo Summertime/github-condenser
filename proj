@@ -1,0 +1,24 @@
+#!/bin/sh
+SASS="sass --no-source-map ext/main.scss:ext/main.css"
+
+case $1 in
+
+    build )
+        pkg_name=$(cat ext/manifest.json | jq --raw-output '"\(.applications.gecko.id) \(.version)"')
+        rm --force *.zip "ext/main.css"
+        zip -D -r -9 "$pkg_name.src.zip" . -x '.git/*' '.gitignore'
+        $SASS --style=compressed
+        (cd ext ; zip -D -r -9 "../$pkg_name.zip" . -x '*.scss' '*/scss/*')
+        ;;
+
+    watch )
+        PIDS=
+        trap 'kill $PIDS;echo' INT
+        $SASS --watch &
+        PIDS="$PIDS $!"
+        wait
+        ;;
+
+    * ) echo "$0 { build | watch }" ;;
+
+esac
