@@ -1,6 +1,6 @@
 #!/bin/sh
 SASS="sass --no-source-map ext/main.scss:ext/main.css"
-ZIP="zip -D -r -9"
+    ZIP="zip -D -r -9"
 
 case $1 in
 
@@ -22,7 +22,10 @@ case $1 in
 
     clean )
         rm --force *.zip "ext/main.css"
+        ;;
 
-    * ) echo "$0 { build | watch }" ;;
+    * )
+        echo "$0 { build | watch }"
+        ;;
 
 esac
